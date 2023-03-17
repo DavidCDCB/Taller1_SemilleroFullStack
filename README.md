@@ -17,7 +17,7 @@ Meanwhile, the compiled output files will be generated in the `bin` folder by de
 
 The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
 
-## Taller aplicación java
+## Taller 1 aplicación java
 
 1)	Construir una clase Factura que descienda de la clase Precio y que incluya dos atributos específicos llamados emisor y cliente y, al menos, un método llamado imprimirFactura.
 
@@ -77,6 +77,17 @@ entero); área en metros cuadrados (tipo entero) y dirección (tipo String).
 
 Los inmuebles para vivienda pueden ser casas o apartamentos. Los inmuebles para vivienda tienen los siguientes atributos: número de habitaciones y número de baños.
 
+## Taller 2 aplicación java
+
+Se requiere definir una clase denominada CálculosNúmericos que realice las siguientes
+operaciones
+Calcular la raíz cuadrada recibiendo un valor double como parámetro. Este método
+debe ser estático. Si el valor no es positivo se
+genera una excepción aritmética.
+Calcular la pendiente de una recta.
+Calcular el punto medio de una recta.
+Calcular las raíces de una ecuación cuadrática.
+Convertir un número en base 10 a un número en base b.
 Las casas pueden ser casas rurales o casas urbanas, su atributo es la cantidad de pisos que poseen.
 Los atributos de las casas rurales son la distancia a la cabecera municipal y la altitud sobre el nivel del mar.
 Las casas urbanas pueden estar en un conjunto cerrado o ser independientes. A su vez, las casas en conjunto cerrado tienen como atributo el valor de
