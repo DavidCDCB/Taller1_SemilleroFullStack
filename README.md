@@ -1,22 +1,3 @@
-## Getting Started
-
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
-
-## Folder Structure
-
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
-
 ## Taller 1 aplicación java
 
 1)	Construir una clase Factura que descienda de la clase Precio y que incluya dos atributos específicos llamados emisor y cliente y, al menos, un método llamado imprimirFactura.
@@ -25,7 +6,7 @@ The `JAVA PROJECTS` view allows you to manage your dependencies. More details ca
 siguientes atributos, que deben ser de acceso protegido:
 
 - Saldo, de tipo float.
--  Número de consignaciones con valor inicial cero, de tipo int.
+- Número de consignaciones con valor inicial cero, de tipo int.
 - Número de retiros con valor inicial cero, de tipo int.
 - Tasa anual (porcentaje), de tipo float.
 - Comisión mensual con valor inicial cero, de tipo float.
@@ -77,7 +58,7 @@ entero); área en metros cuadrados (tipo entero) y dirección (tipo String).
 
 Los inmuebles para vivienda pueden ser casas o apartamentos. Los inmuebles para vivienda tienen los siguientes atributos: número de habitaciones y número de baños.
 
-## Taller 2 aplicación java
+## Taller 2 Exepciones
 
 Se requiere definir una clase denominada CálculosNúmericos que realice las siguientes
 operaciones
@@ -103,3 +84,62 @@ determinar si son del Gobierno.
 
 Cada inmueble tiene un valor de compra.
 Este depende del área de cada inmueble según la tabla.
+
+## Taller 3 Clases abstractas e interfaces
+
+1. Usted debe escribir un método que calcula el valor que debe pagar una persona por
+boletas de cine, lo cual depende de la cantidad de boletas que lleva. Si dentro del método
+encuentra que la cantidad de boletas no está dentro de los rangos establecidos, ¿debería
+lanzar una excepción o retornar cero? Explique brevemente su respuesta.
+
+2. Usted debe escribir un método que consulta las materias que tiene inscritas un estudiante, a partir del código del estudiante. Si el estudiante no tiene materias inscritas, ¿debería lanzar una excepción o retornar null? Explique brevemente su respuesta.
+
+3. Se desea crear un reproductor de Música, se tienen los formatos mp3 y wav. Ambos
+tienen como atributos la duración (minutos: segundos), tamaño, artista, compositor y
+genero musical. Ambos se reproducen de manera diferente.
+
+- a. Para una implementación en código, ¿usaría una clase abstracta o una interfaz?
+¿Por qué? Desarrolle en Java una posible solución.
+
+- b. Si se decidiera agregar un formato de video en mp4, donde solo se quiere
+reproducir su audio, y a diferencia de mp3 y wav este no posee artista, compositor
+y género musical, sino creador y tipo de video. ¿Implementaría clase abstracta o
+interfaz? ¿Por qué? ¿Como quedaría en código añadiendo el formato de video?
+
+- c. Si cada vez se quiere añadir un nuevo formato diferente en el reproductor, el
+código implementado por usted es capaz de adaptarse fácilmente. Para
+referencias consultar sobre escalabilidad en programación.
+
+4. Se requiere crear un Software para un banco, este maneja diferentes tipos de cuentas,
+Ahorro y Corriente, tienen como atributos el numero de cuenta, saldo, y un propietario. Se
+pueden realizar acciones como depositar y retirar.
+
+Al momento de retirar dinero, en la cuenta de ahorros, deberá restar el monto solicitado, y si realiza más de 3 retiros, deberá
+de restar un 1% del valor que retira, es decir si pide retirar un valor de 3000 unidades debe
+sacar un 1% que son 30 unidades, y restar un total de 3030 unidades si se cumple que se
+hacen más de 3 retiros. 
+
+Para una cuenta corriente, no debe permitir realizar más de 5
+retiros, además, al depositar en una cuenta de ahorros, se adicionará un 0.5% del valor
+depositado en el saldo para sus 2 primeros depósitos. Implemente una solución en Java,
+con clases abstractas o interfaces, y realice las validaciones correspondientes con el uso de
+excepciones propias.
+
+## Getting Started
+
+Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+
+## Folder Structure
+
+The workspace contains two folders by default, where:
+
+- `src`: the folder to maintain sources
+- `lib`: the folder to maintain dependencies
+
+Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+
+> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+
+## Dependency Management
+
+The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
