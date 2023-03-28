@@ -22,7 +22,7 @@ public class CuentaAhorrosRepository extends CuentaRepository implements IReposi
 	@Override
 	public void insert(CuentaAhorros entity) {
 		Connection connection = null;
-		String sql = "INSERT INTO cuentas(numero, saldo, propietario, retiros) VALUES(?,?,?,?)";
+		String sql = "INSERT INTO cuentas(numero, saldo, propietario, retiros, tipo) VALUES(?,?,?,?,?)";
 		try {
 			connection = DriverManager.getConnection(this.fileDB);
 			PreparedStatement pstmt = connection.prepareStatement(sql);
@@ -30,6 +30,7 @@ public class CuentaAhorrosRepository extends CuentaRepository implements IReposi
 			pstmt.setDouble(2, entity.getSaldo());
 			pstmt.setString(3, entity.getPropietario());
 			pstmt.setDouble(4, entity.getCantidadRetiros());
+			pstmt.setString(5, "Ahorros");
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -42,7 +43,7 @@ public class CuentaAhorrosRepository extends CuentaRepository implements IReposi
 	public List<CuentaAhorros> selectAll() {
 		Connection connection = null;
 		List<CuentaAhorros> cuentas = new ArrayList<>();
-		String sql = "SELECT * FROM cuentas";
+		String sql = "SELECT * FROM cuentas WHERE tipo = 'Ahorros'";
 		try {
 			connection = DriverManager.getConnection(super.fileDB);
 			Statement stmt = connection.createStatement();
@@ -69,7 +70,7 @@ public class CuentaAhorrosRepository extends CuentaRepository implements IReposi
 	public CuentaAhorros selectById(int id) throws CuentaNoEncontrada {
 		CuentaAhorros cuenta = null;
 		Connection connection = null;
-		String sql = "SELECT * FROM cuentas WHERE id = ?";
+		String sql = "SELECT * FROM cuentas WHERE numero = ? AND tipo = 'Ahorros'";
 		try {
 			connection = DriverManager.getConnection(super.fileDB);
 			PreparedStatement pstmt = connection.prepareStatement(sql);
@@ -100,7 +101,7 @@ public class CuentaAhorrosRepository extends CuentaRepository implements IReposi
 	public void update(CuentaAhorros entity, int id) throws CuentaNoEncontrada {
 		int response = 0;
 		Connection connection = null;
-		String sql = "UPDATE cuentas SET numero=?, saldo=?, propietario=?, retiros=? WHERE id=?";
+		String sql = "UPDATE cuentas SET numero=?, saldo=?, propietario=?, retiros=? WHERE numero=?";
 		try {
 			connection = DriverManager.getConnection(super.fileDB);
 			PreparedStatement pstmt = connection.prepareStatement(sql);

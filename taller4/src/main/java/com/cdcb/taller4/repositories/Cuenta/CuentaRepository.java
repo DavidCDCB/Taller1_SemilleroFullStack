@@ -67,7 +67,7 @@ public class CuentaRepository{
 	public void delete(int id) {
 		int response = 0;
 		Connection connection = null;
-		String sql = "DELETE FROM cuentas WHERE id = ?";
+		String sql = "DELETE FROM cuentas WHERE numero = ?";
 		try {
 			connection = DriverManager.getConnection(this.fileDB);
 			PreparedStatement pstmt = connection.prepareStatement(sql);

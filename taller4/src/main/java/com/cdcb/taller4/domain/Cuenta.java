@@ -14,7 +14,8 @@ public abstract class Cuenta {
 			"saldo REAL NOT NULL,",
 			"propietario TEXT NOT NULL,",
 			"retiros INTEGER DEFAULT 0,",
-			"depositos INTEGER DEFAULT 0",
+			"depositos INTEGER DEFAULT 0,",
+			"tipo TEXT NOT NULL",
 		");"
 	);
 

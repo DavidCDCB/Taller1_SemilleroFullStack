@@ -8,7 +8,6 @@ import com.cdcb.taller4.repositories.Cuenta.CuentaAhorrosRepository;
 import com.cdcb.taller4.repositories.Cuenta.CuentaCorrienteRepository;
 import com.cdcb.taller4.services.CuentaAhorrosService;
 import com.cdcb.taller4.services.CuentaCorrienteService;
-import com.cdcb.taller4.services.CuentaService;
 import com.cdcb.taller4.services.ICuentaService;
 
 public class App 
@@ -30,8 +29,9 @@ public class App
         System.out.println(cuentaAhorrosService.getCuenta(1).toString());
         cuentaAhorros.setPropietario("David");
         cuentaAhorrosService.updateCuenta(cuentaAhorros, 1);
-        cuentaAhorrosService.removeCuenta(2);
+        cuentaAhorrosService.removeCuenta(1);
 
         CliMenu cliMenu = new CliMenu(cuentaAhorrosService, cuentaCorrienteService);
+        cliMenu.menuPrincipal();
     }
 }

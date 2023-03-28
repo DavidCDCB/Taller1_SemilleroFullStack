@@ -8,6 +8,7 @@ import com.cdcb.taller4.domain.CuentaCorriente;
 import com.cdcb.taller4.repositories.IRepository;
 import com.cdcb.taller4.repositories.Cuenta.CuentaAhorrosRepository;
 import com.cdcb.taller4.services.CuentaAhorrosService;
+import com.cdcb.taller4.services.CuentaCorrienteService;
 import com.cdcb.taller4.services.ICuentaService; 
 
 public class CliMenu {
@@ -29,6 +30,9 @@ public class CliMenu {
 			case 1:
 				this.menuCuentas("ahorros");
 				break;
+			case 2:
+				this.menuCuentas("corriente");
+				break;
 		
 			default:
 				break;
@@ -46,7 +50,6 @@ public class CliMenu {
 				break;
 			case 2:
 				menuBuscarCuenta(tipo);
-
 				break;
 		
 			default:
@@ -67,34 +70,50 @@ public class CliMenu {
 		propietario = sc.nextLine();
 		if(tipo.equals("ahorros")){
 			CuentaAhorros cuenta = new CuentaAhorros(numero, saldo, propietario);
+			cuentaAhorrosService.saveCuenta(cuenta);
 		}else{
 			CuentaCorriente cuenta = new CuentaCorriente(numero, saldo, propietario);
+			cuentaCorrienteService.saveCuenta(cuenta);
 		}
 	}
 
 	public void menuBuscarCuenta(String tipo){
 		int numero;
+		Cuenta encontrada = null;
 		System.out.println("Numero: ");
 		numero = sc.nextInt();
+		if(tipo.equals("ahorros")){
+			encontrada = cuentaAhorrosService.getCuenta(numero);
+		}else{
+			encontrada = cuentaCorrienteService.getCuenta(numero);
+		}
+		System.out.println(encontrada);
 		// Mostrar cuenta ...
-		menuCambioCuenta(null);
+		menuCambioCuenta(encontrada, tipo);
 	}
 
-
-	public void menuCambioCuenta(Cuenta cuenta) {
+	public void menuCambioCuenta(Cuenta cuenta, String tipo) {
+		double cantidad;
 		System.out.println("[1] Retirar cantidad");
 		System.out.println("[2] Depositar cantidad");
 		int input = sc.nextInt();
+		System.out.println("Cantidad: ");
 		switch (input) {
 			case 1:
-				
+				cantidad = sc.nextDouble();
+				cuenta.retirar(cantidad);
 				break;
 			case 2:
-				
+				cantidad = sc.nextDouble();
+				cuenta.depositar(cantidad);
 				break;
-		
 			default:
 				break;
+		}
+		if(tipo.equals("ahorros")){
+			cuentaAhorrosService.updateCuenta((CuentaAhorros)cuenta, (int)cuenta.getNumero());
+		}else{
+			cuentaCorrienteService.updateCuenta((CuentaCorriente)cuenta, (int)cuenta.getNumero());
 		}
 	}
 	
