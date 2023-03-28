@@ -20,10 +20,10 @@ public class CuentaCorriente extends Cuenta {
 
 	@Override
 	public void retirar(double cantidad) throws RetirosExcedidos {
-		if(this.cantidadRetiros < 5){
+		if(this.cantidadRetiros < 5 || cantidad > this.saldo){
 			this.saldo -= cantidad;
 		}else{
-			throw new RetirosExcedidos("No se puede retirar mas de 5 veces");
+			throw new RetirosExcedidos("Retiro invalido");
 		}
 	}
 

@@ -56,6 +56,4 @@ public abstract class Cuenta {
 	public String toString() {
 		return "Cuenta [numero=" + numero + ", saldo=" + saldo + ", propietario=" + propietario + "]";
 	}
-
-
 }

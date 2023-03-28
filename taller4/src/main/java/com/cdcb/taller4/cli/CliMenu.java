@@ -5,10 +5,7 @@ import java.util.Scanner;
 import com.cdcb.taller4.domain.Cuenta;
 import com.cdcb.taller4.domain.CuentaAhorros;
 import com.cdcb.taller4.domain.CuentaCorriente;
-import com.cdcb.taller4.repositories.IRepository;
-import com.cdcb.taller4.repositories.Cuenta.CuentaAhorrosRepository;
-import com.cdcb.taller4.services.CuentaAhorrosService;
-import com.cdcb.taller4.services.CuentaCorrienteService;
+import com.cdcb.taller4.exceptions.RetirosExcedidos;
 import com.cdcb.taller4.services.ICuentaService; 
 
 public class CliMenu {
@@ -87,9 +84,10 @@ public class CliMenu {
 		}else{
 			encontrada = cuentaCorrienteService.getCuenta(numero);
 		}
-		System.out.println(encontrada);
-		// Mostrar cuenta ...
-		menuCambioCuenta(encontrada, tipo);
+		if(encontrada != null){
+			System.out.println(encontrada);
+			menuCambioCuenta(encontrada, tipo);
+		}
 	}
 
 	public void menuCambioCuenta(Cuenta cuenta, String tipo) {
@@ -101,7 +99,11 @@ public class CliMenu {
 		switch (input) {
 			case 1:
 				cantidad = sc.nextDouble();
-				cuenta.retirar(cantidad);
+				try {
+					cuenta.retirar(cantidad);
+				} catch (RetirosExcedidos e) {
+					System.out.println(e.getMessage());
+				}
 				break;
 			case 2:
 				cantidad = sc.nextDouble();

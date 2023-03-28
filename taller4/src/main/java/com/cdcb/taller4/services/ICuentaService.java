@@ -2,7 +2,6 @@ package com.cdcb.taller4.services;
 
 import java.util.List;
 
-
 public interface ICuentaService<T> {
 	public void createDDL();
 	public void saveCuenta(T cuenta);
