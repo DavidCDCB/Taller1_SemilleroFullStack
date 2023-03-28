@@ -58,4 +58,12 @@ public class CuentaCorrienteService implements ICuentaService<CuentaCorriente> {
 			System.out.println(e.getMessage());
 		}
 	}
+
+	@Override
+	public void transferir(int idOrigen, int idDestino, double cantidad) {
+		CuentaCorriente cuentaOrigen = this.getCuenta(idOrigen);
+		CuentaCorriente cuentaDestino = this.getCuenta(idDestino);
+		cuentaDestino.depositar(cantidad);
+		cuentaOrigen.retirar(cantidad);
+	}
 }

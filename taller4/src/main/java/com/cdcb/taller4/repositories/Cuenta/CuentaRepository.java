@@ -84,7 +84,7 @@ public class CuentaRepository{
 	}
 
 	public void createTable(){
-		this.executeQuery("DROP TABLE IF EXISTS cuentas");
+		//this.executeQuery("DROP TABLE IF EXISTS cuentas");
 		this.executeQuery(Cuenta.DDL);
 	}
 }

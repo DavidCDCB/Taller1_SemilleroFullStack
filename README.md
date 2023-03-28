@@ -1,3 +1,7 @@
+## Taller 4 Persistencia cuentas bancarias
+
+![](https://i.imgur.com/DJVRnVw.jpg)
+
 ## Taller 1 aplicación java
 
 1)	Construir una clase Factura que descienda de la clase Precio y que incluya dos atributos específicos llamados emisor y cliente y, al menos, un método llamado imprimirFactura.

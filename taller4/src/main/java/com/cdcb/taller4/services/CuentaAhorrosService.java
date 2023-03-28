@@ -59,5 +59,11 @@ public class CuentaAhorrosService implements ICuentaService<CuentaAhorros> {
 		}
 	}
 
-
+	@Override
+	public void transferir(int idOrigen, int idDestino, double cantidad) {
+		CuentaAhorros cuentaOrigen = this.getCuenta(idOrigen);
+		CuentaAhorros cuentaDestino = this.getCuenta(idDestino);
+		cuentaDestino.depositar(cantidad);
+		cuentaOrigen.retirar(cantidad);
+	}
 }

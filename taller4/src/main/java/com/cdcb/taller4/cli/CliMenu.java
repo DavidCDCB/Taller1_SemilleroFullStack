@@ -30,13 +30,11 @@ public class CliMenu {
 			case 2:
 				this.menuCuentas("corriente");
 				break;
-		
 			default:
 				break;
 		}
 	}
 	
-
 	public void menuCuentas(String tipo) {
 		System.out.println("[1] Crear Cuenta");
 		System.out.println("[2] Buscar cuenta");
@@ -48,7 +46,6 @@ public class CliMenu {
 			case 2:
 				menuBuscarCuenta(tipo);
 				break;
-		
 			default:
 				break;
 		}
@@ -59,12 +56,13 @@ public class CliMenu {
 		int saldo;
 		String propietario;
 
+		System.out.println("Propietario: ");
+		propietario = sc.next();
 		System.out.println("Numero: ");
 		numero = sc.nextInt();
 		System.out.println("Saldo: ");
 		saldo = sc.nextInt();
-		System.out.println("Propietario: ");
-		propietario = sc.nextLine();
+
 		if(tipo.equals("ahorros")){
 			CuentaAhorros cuenta = new CuentaAhorros(numero, saldo, propietario);
 			cuentaAhorrosService.saveCuenta(cuenta);
@@ -86,17 +84,22 @@ public class CliMenu {
 		}
 		if(encontrada != null){
 			System.out.println(encontrada);
-			menuCambioCuenta(encontrada, tipo);
+			menuTransaccionCuenta(encontrada, tipo);
 		}
 	}
 
-	public void menuCambioCuenta(Cuenta cuenta, String tipo) {
+	public void menuTransaccionCuenta(Cuenta cuenta, String tipo) {
 		double cantidad;
 		System.out.println("[1] Retirar cantidad");
 		System.out.println("[2] Depositar cantidad");
+		System.out.println("[3] Transferir cantidad");
+		System.out.println("[0] Salir");
 		int input = sc.nextInt();
 		System.out.println("Cantidad: ");
 		switch (input) {
+			case 0:
+				menuPrincipal();
+				break;
 			case 1:
 				cantidad = sc.nextDouble();
 				try {
@@ -109,6 +112,9 @@ public class CliMenu {
 				cantidad = sc.nextDouble();
 				cuenta.depositar(cantidad);
 				break;
+			case 3:
+				menuTransferir((int)cuenta.getNumero(), tipo);
+				break;
 			default:
 				break;
 		}
@@ -119,4 +125,17 @@ public class CliMenu {
 		}
 	}
 	
+	public void menuTransferir(int idOrigen, String tipo){
+		int idDestino;
+		double cantidad;
+		System.out.println("Numero cuenta destino: ");
+		idDestino = sc.nextInt();
+		System.out.println("Cantidad: ");
+		cantidad = sc.nextDouble();
+		if(tipo.equals("ahorros")){
+			cuentaAhorrosService.transferir(idOrigen, idDestino, cantidad);
+		}else{
+			cuentaCorrienteService.transferir(idOrigen, idDestino, cantidad);
+		}
+	}
 }

@@ -9,4 +9,5 @@ public interface ICuentaService<T> {
 	public T getCuenta(int id);
 	public void updateCuenta(T cuenta, int id);
 	public void removeCuenta(int id);
+	public void transferir(int idOrigen, int idDestino, double cantidad);
 }

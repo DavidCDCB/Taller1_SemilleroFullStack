@@ -14,22 +14,12 @@ public class App
 {
     public static void main( String[] args )
     {
-        
         IRepository<CuentaAhorros> cuentaAhorrosRepository = new CuentaAhorrosRepository("cuentasDB.db");
         ICuentaService<CuentaAhorros> cuentaAhorrosService = new CuentaAhorrosService(cuentaAhorrosRepository);
         cuentaAhorrosService.createDDL();
 
         IRepository<CuentaCorriente> cuentaCorreienteRepository = new CuentaCorrienteRepository("cuentasDB.db");
         ICuentaService<CuentaCorriente> cuentaCorrienteService = new CuentaCorrienteService(cuentaCorreienteRepository);
-    
-        CuentaAhorros cuentaAhorros = new CuentaAhorros(1,2,"cdcb");
-        cuentaAhorros.setCantidadRetiros(1);
-        cuentaAhorrosService.saveCuenta(cuentaAhorros);
-
-        System.out.println(cuentaAhorrosService.getCuenta(1).toString());
-        cuentaAhorros.setPropietario("David");
-        cuentaAhorrosService.updateCuenta(cuentaAhorros, 1);
-        cuentaAhorrosService.removeCuenta(1);
 
         CliMenu cliMenu = new CliMenu(cuentaAhorrosService, cuentaCorrienteService);
         cliMenu.menuPrincipal();

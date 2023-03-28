@@ -22,7 +22,7 @@ public class CuentaCorrienteRepository extends CuentaRepository implements IRepo
 	@Override
 	public void insert(CuentaCorriente entity) {
 		Connection connection = null;
-		String sql = "INSERT INTO cuentas(numero, saldo, propietario, retiros, depositos tipo) VALUES(?,?,?,?,?,?)";
+		String sql = "INSERT INTO cuentas(numero, saldo, propietario, retiros, depositos, tipo) VALUES(?,?,?,?,?,?)";
 		try {
 			connection = DriverManager.getConnection(this.fileDB);
 			PreparedStatement pstmt = connection.prepareStatement(sql);
