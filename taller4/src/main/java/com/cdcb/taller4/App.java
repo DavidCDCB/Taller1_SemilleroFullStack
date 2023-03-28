@@ -1,11 +1,15 @@
 package com.cdcb.taller4;
 
-import com.cdcb.taller4.model.CuentaAhorros;
-import com.cdcb.taller4.model.CuentaCorriente;
-import com.cdcb.taller4.repositories.CuentaAhorrosRepository;
-import com.cdcb.taller4.repositories.CuentaCorrienteRepository;
+import com.cdcb.taller4.cli.CliMenu;
+import com.cdcb.taller4.domain.CuentaAhorros;
+import com.cdcb.taller4.domain.CuentaCorriente;
 import com.cdcb.taller4.repositories.IRepository;
+import com.cdcb.taller4.repositories.Cuenta.CuentaAhorrosRepository;
+import com.cdcb.taller4.repositories.Cuenta.CuentaCorrienteRepository;
+import com.cdcb.taller4.services.CuentaAhorrosService;
+import com.cdcb.taller4.services.CuentaCorrienteService;
 import com.cdcb.taller4.services.CuentaService;
+import com.cdcb.taller4.services.ICuentaService;
 
 public class App 
 {
@@ -13,11 +17,11 @@ public class App
     {
         
         IRepository<CuentaAhorros> cuentaAhorrosRepository = new CuentaAhorrosRepository("cuentasDB.db");
-        CuentaService<CuentaAhorros> cuentaAhorrosService = new CuentaService<>(cuentaAhorrosRepository);
+        ICuentaService<CuentaAhorros> cuentaAhorrosService = new CuentaAhorrosService(cuentaAhorrosRepository);
         cuentaAhorrosService.createDDL();
 
         IRepository<CuentaCorriente> cuentaCorreienteRepository = new CuentaCorrienteRepository("cuentasDB.db");
-        CuentaService<CuentaCorriente> cuentaCorrienteService = new CuentaService<>(cuentaCorreienteRepository);
+        ICuentaService<CuentaCorriente> cuentaCorrienteService = new CuentaCorrienteService(cuentaCorreienteRepository);
     
         CuentaAhorros cuentaAhorros = new CuentaAhorros(1,2,"cdcb");
         cuentaAhorros.setCantidadRetiros(1);
@@ -27,5 +31,7 @@ public class App
         cuentaAhorros.setPropietario("David");
         cuentaAhorrosService.updateCuenta(cuentaAhorros, 1);
         cuentaAhorrosService.removeCuenta(2);
+
+        CliMenu cliMenu = new CliMenu(cuentaAhorrosService, cuentaCorrienteService);
     }
 }
