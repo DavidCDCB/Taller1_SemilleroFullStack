@@ -6,6 +6,10 @@ public class CuentaAhorros extends Cuenta {
 
 	private int cantidadRetiros = 0;
 
+	public CuentaAhorros(){
+		
+	}
+
 	public CuentaAhorros(double numero, double saldo, String propietario) {
 		super(numero, saldo, propietario);
 	}

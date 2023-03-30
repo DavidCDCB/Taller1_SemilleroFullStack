@@ -19,6 +19,10 @@ public abstract class Cuenta {
 		");"
 	);
 
+	public Cuenta() {
+		
+	}
+
 	public Cuenta(double numero, double saldo, String propietario) {
 		this.numero = numero;
 		this.saldo = saldo;
