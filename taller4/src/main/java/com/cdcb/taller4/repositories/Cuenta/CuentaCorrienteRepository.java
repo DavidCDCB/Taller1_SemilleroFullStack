@@ -54,7 +54,7 @@ public class CuentaCorrienteRepository extends CuentaRepository implements IRepo
 				CuentaCorriente cuenta = new CuentaCorriente(
 					rs.getInt("numero"),
 					rs.getInt("saldo"),
-					rs.getNString("propíetario")
+					rs.getString("propietario")
 				);
 				cuenta.setCantidadRetiros(rs.getInt("retiros"));
 				cuenta.setCantidadRetiros(rs.getInt("depositos"));

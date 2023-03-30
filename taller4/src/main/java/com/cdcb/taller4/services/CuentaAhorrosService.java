@@ -41,22 +41,25 @@ public class CuentaAhorrosService implements ICuentaService<CuentaAhorros> {
 	}
 
 	@Override
-	public void updateCuenta(CuentaAhorros cuenta, int id) {
+	public boolean updateCuenta(CuentaAhorros cuenta, int id) {
 		try {
 			this.cuentaRepository.update(cuenta, id);
+			return true;
 		} catch (CuentaNoEncontrada e) {
 			System.out.println(e.getMessage());
 		}
-		
+		return false;
 	}
 
 	@Override
-	public void removeCuenta(int id) {
+	public boolean removeCuenta(int id) {
 		try {
 			this.cuentaRepository.delete(id);
+			return true;
 		} catch (CuentaNoEncontrada e) {
 			System.out.println(e.getMessage());
 		}
+		return false;
 	}
 
 	@Override

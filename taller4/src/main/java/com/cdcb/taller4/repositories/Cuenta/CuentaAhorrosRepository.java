@@ -53,7 +53,7 @@ public class CuentaAhorrosRepository extends CuentaRepository implements IReposi
 				CuentaAhorros cuenta = new CuentaAhorros(
 					rs.getInt("numero"),
 					rs.getInt("saldo"),
-					rs.getNString("propíetario")
+					rs.getString("propietario")
 				);
 				cuenta.setCantidadRetiros(rs.getInt("retiros"));
 				cuentas.add(cuenta);
